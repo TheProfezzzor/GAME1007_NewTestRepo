@@ -26,8 +26,13 @@ int main(int argc, char* argv[])
 	else
 	{
 		p_renderer = SDL_CreateRenderer(p_window, -1, SDL_RENDERER_ACCELERATED);
+		if (p_renderer == nullptr)
+		{
+			cout << "Problem initializing renderer... aborting!" << endl;
+			return 3;
+		}
 	}
-	SDL_SetRenderDrawColor(p_renderer, 0, 64, 255, 255); // 0-255 for each color channel
+	SDL_SetRenderDrawColor(p_renderer, 255, 128, 64, 255); // 0-255 for each color channel
 	SDL_RenderClear(p_renderer); // 'paints over' window with draw color
 	SDL_RenderPresent(p_renderer); // Refreshes window
 	system("pause"); // Just to pause before quit.
